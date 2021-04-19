@@ -5,6 +5,7 @@ import LandingPage from './pages/Landing/LandingPage';
 import ProjectsPage from './pages/Projects/ProjectsPage';
 import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
+import App from './pages/App/App';
 
 class App extends Component {
   render() {
