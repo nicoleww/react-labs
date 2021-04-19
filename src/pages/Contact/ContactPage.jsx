@@ -7,8 +7,20 @@ import Projects from '../../components/Projects/Projects';
 import Contact from '../../components/Contact/Contact';
 
 
-export default function ContactPage(props) {
+export default class App extends React.Component {
+    state = {
+      name: "",
+      email: "",
+      content: "",
+    }; 
 
+    handleEmail = (e) => {
+      alert("form submitted")
+      e.preventDefault();
+      this.setState({ [e.target.name]: e.target.value }) 
+    }; 
+
+    render() {
     return (
     <>
       <nav className="nav">
@@ -18,8 +30,8 @@ export default function ContactPage(props) {
         <Link to="/contact">Contact</Link>
       </nav>
       <br />
-      <Contact />
+      <Contact handleEmail={this.handleEmail}/>
     </>
     );
-
+    }
 }

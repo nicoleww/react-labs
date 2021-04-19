@@ -15,7 +15,12 @@ function Contact(props) {
                 <a href="mailto: nicwitherall@gmail.com"><img src="https://i.imgur.com/tCoO5ZJ.png" /></a>
             </div>
             <div className="form-container">
-                
+                <form>
+                    Name: <input name="name"></input><br />
+                    Email: <input name="email"></input><br />
+                    Message: <textarea name="content"></textarea><br />
+                    <button onClick={() => {props.handleEmail()}}>Submit</button>
+                </form>
             </div>
         </div>
     )
