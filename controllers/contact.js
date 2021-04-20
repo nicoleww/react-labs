@@ -1,4 +1,4 @@
-const Contact = require('../../models/Contact');
+const Contact = require('../models/contact');
 
 module.exports = {
     index,
@@ -11,6 +11,16 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-    // 1. Create a post in the database (the data will be incoming via `req.body`)
-    // 2. use res.json() to send a response to the frontend
+    console.log("AHHHHHHHHHHHHHHHHH")
+    try {
+        console.log("WEEEEEEEEEEEEE")
+    await Contact.create({
+        name: req.body.name,
+        email: req.body.email,
+        content: req.body.content,
+    })
+    res.status(200).json("ok")
+} catch (err) {
+    res.json(err);
+}
 }

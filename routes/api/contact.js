@@ -6,6 +6,6 @@ const contactCtrl = require('../../controllers/contact');
 router.get('/', contactCtrl.index)
 
 // POST new post
-router.post('/', contactCtrl.create)
+router.post('/sendEmail', contactCtrl.create)
 
 module.exports = router;

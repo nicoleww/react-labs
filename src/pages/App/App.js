@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import LandingPage from './pages/Landing/LandingPage';
-import ProjectsPage from './pages/Projects/ProjectsPage';
-import AboutPage from './pages/About/AboutPage';
-import ContactPage from './pages/Contact/ContactPage';
-import App from './pages/App/App';
+import LandingPage from '../Landing/LandingPage';
+import ProjectsPage from '../Projects/ProjectsPage';
+import AboutPage from '../About/AboutPage';
+import ContactPage from '../Contact/ContactPage';
 
 class App extends Component {
   render() {

@@ -1,7 +1,44 @@
 import React from 'react';
 
 
-function Contact(props) {
+export default class Contact extends React.Component {
+    state = {
+      name: "",
+      email: "",
+      content: "",
+    }; 
+
+    handleForm = (e) => {
+      this.setState({ [e.target.name]: e.target.value }) 
+    }; 
+
+    handleClick = async (e) => {
+        e.preventDefault();
+        try {
+        let fetchResponse = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {'Content-Type': "application/json"},
+        body: JSON.stringify({ 
+            name: this.state.name,
+            email: this.state.email,
+            content: this.state.content,
+         })
+        })
+         let serverResponse = await fetchResponse.json()
+         console.log("SUCCESS YES")
+         this.setState({
+             name: "",
+             email: "",
+             content: "",
+         })
+         console.log("AHHHHHHHHH")
+         console.log("We send")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    render() {
     return (
         <div className="Contact">
             <div className="text">
@@ -16,15 +53,13 @@ function Contact(props) {
             </div>
             <div className="form-container">
                 <form>
-                    Name: <input name="name"></input><br />
-                    Email: <input name="email"></input><br />
-                    Message: <textarea name="content"></textarea><br />
-                    <button onClick={() => {props.handleEmail()}}>Submit</button>
+                    Name: <input name="name" value={this.state.name} onChange={this.handleForm}></input><br />
+                    Email: <input name="email" value={this.state.email} onChange={this.handleForm}></input><br />
+                    Message: <textarea name="content" value={this.state.content} onChange={this.handleForm}></textarea><br />
+                    <button onClick={this.handleClick}>Submit</button>
                 </form>
             </div>
         </div>
     )
+    } 
 }
-
-
-export default Contact;
